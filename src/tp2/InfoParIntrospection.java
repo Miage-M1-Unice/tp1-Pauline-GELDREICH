@@ -15,6 +15,7 @@ public class InfoParIntrospection {
 
         System.out.println();
         afficheAttributs(cl);
+        afficheConstructeurs(cl);
 
 
 
@@ -72,10 +73,32 @@ public class InfoParIntrospection {
             }
         }
 
+    public static void afficheConstructeurs(Class cl) {
+        Constructor[] constructors = cl.getConstructors();
+        System.out.println(" ");
+        System.out.println("//Constructeurs");
+        for (Constructor c: constructors){
+            String n = c.getName() ;
+            String m = Modifier.toString(c.getModifiers());
+            System.out.print(m + " " + n );
 
+            Class[] p = c.getParameterTypes();
+            System.out.print("(");
+            for (int i = 0 ; i < p.length; i++) {
 
+                System.out.print(p[i] );
+                if (i < p.length -1 ) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println(");");
+        }
 
     }
+
+
+
+}
 
 
 
